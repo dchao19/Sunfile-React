@@ -36,6 +36,19 @@ function hasTeam (callback) {
 	x.send();
 }
 
+function getSources(){
+	var x = new XMLHttpRequest();
+	x.withCredentials = true;
+	x.open('GET', API_URL+"/sources");
+	x.onreadystatechange = function () {
+		if(x.readyState == 4 && x.status == 200) {
+			sources = JSON.parse(x.responseText).result.sources;
+			sourcesFullName = JSON.parse(x.responseText).result.sourcesFullName;
+		}
+	}
+	x.send()
+}
+
 function executeLogin(username, password, callback){
 	var x = new XMLHttpRequest();
 	x.withCredentials = true;

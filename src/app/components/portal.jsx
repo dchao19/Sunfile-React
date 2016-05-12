@@ -54,7 +54,7 @@ class Portal extends React.Component {
 		});
 
 		chrome.runtime.onMessage.addListener(function(request, sender) {
-			scriptMessageExecute(request, sender, ctxt, {
+			onScriptMessage(request, sender, ctxt, {
 				teamID: ctxt.state.teamID,
 				fullName: ctxt.state.fullName
 			});

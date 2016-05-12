@@ -19,7 +19,7 @@ class PreChecker extends React.Component {
 			if(x.readyState == 4 && x.status == 200){
 				var response = JSON.parse(x.responseText);
 				sources = response.result.sources;
-				sourcesFullName = response.result.sources;
+				sourcesFullName = response.result.sourcesFullName;
 				isLoggedIn(function(success, result){
 					if(!success) ctxt.context.router.push('/welcome');
 					else ctxt.checkTeam();

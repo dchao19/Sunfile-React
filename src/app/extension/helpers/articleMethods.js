@@ -250,6 +250,9 @@ function onScriptMessage (request, sender,ctxt,user) {
 		grabbedArticle.teamID = user.teamID;
 		grabbedArticle.userFullName = user.fullName;
 		grabbedArticle.html = request.source;
+		var temp = $(grabbedArticle.html).find('.last-update').remove().end().prop('outerHTML');
+		console.log(temp);
+		grabbedArticle.html = temp;
 		articleContent(grabbedArticle.html, function (success, result) {
 			if(success) {
 				grabbedArticle.articleContent = result.text;
@@ -267,23 +270,23 @@ function onScriptMessage (request, sender,ctxt,user) {
 								grabbedArticle.fileName = result + " " + grabbedArticle.shortPublication + " - " + grabbedArticle.title.replace(":", "").replace("?", "").replace("|", "") + ".docx";
 								getAuthor(url, function(success, result){
 									grabbedArticle.author = result;
-									getSummary(grabbedArticle.articleContent, grabbedArticle.title, function(success, result){
+									//getSummary(grabbedArticle.articleContent, grabbedArticle.title, function(success, result){
 										grabbedArticle.summary = result;
-										submitArticle(grabbedArticle, function(success, response){
-											if(!result){
-												ctxt.refs.alert.style.display = "block";
-												ctxt.refs.alertText.innerHTML = result.errMessage;
-												ctxt.refs.fileButton.className.replace(' disabled', '');
-												ctxt.refs.fileButton.removeAttribute('disabled');
-												ctxt.refs.fileButton.innerHTML = "File this article";
-											}else {
-												ctxt.refs.fileButton.className.replace(' disabled', '');
-												ctxt.refs.fileButton.removeAttribute('disabled');
-												ctxt.refs.fileButton.innerHTML = "File this article";
-												saveArticle();
-											}
-										});
-									});
+										// submitArticle(grabbedArticle, function(success, response){
+										// 	if(!result){
+										// 		ctxt.refs.alert.style.display = "block";
+										// 		ctxt.refs.alertText.innerHTML = result.errMessage;
+										// 		ctxt.refs.fileButton.className.replace(' disabled', '');
+										// 		ctxt.refs.fileButton.removeAttribute('disabled');
+										// 		ctxt.refs.fileButton.innerHTML = "File this article";
+										// 	}else {
+										// 		ctxt.refs.fileButton.className.replace(' disabled', '');
+										// 		ctxt.refs.fileButton.removeAttribute('disabled');
+										// 		ctxt.refs.fileButton.innerHTML = "File this article";
+										// 		saveArticle();
+										// 	}
+										//});
+									//});
 								});
 							})
 						}

@@ -250,7 +250,7 @@ function onScriptMessage (request, sender,ctxt,user) {
 		grabbedArticle.teamID = user.teamID;
 		grabbedArticle.userFullName = user.fullName;
 		grabbedArticle.html = request.source;
-		var temp = $(grabbedArticle.html).find('.last-update').remove().end().prop('outerHTML');
+		var temp = $("<div/>").append($(grabbedArticle.html).find('.last-update').remove().end()).html();
 		console.log(temp);
 		grabbedArticle.html = temp;
 		articleContent(grabbedArticle.html, function (success, result) {

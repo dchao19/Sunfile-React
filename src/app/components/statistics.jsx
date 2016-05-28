@@ -19,7 +19,7 @@ class Stats extends React.Component{
 		var ctxt = this;
 		var x = new XMLHttpRequest();
 		x.withCredentials = true;
-		x.open('GET', 'https://sunfile.danielchao.me/api/stats/getStats');
+		x.open('GET', API_URL+'/getStats');
 		x.onreadystatechange = function(){
 			if(x.readyState == 4 && x.status == 200){
 				var response  = JSON.parse(x.responseText);

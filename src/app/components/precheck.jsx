@@ -14,7 +14,7 @@ class PreChecker extends React.Component {
 		var ctxt = this;
 		var x = new XMLHttpRequest();
 		x.withCredentials = true;
-		x.open('GET', 'https://sunfile.danielchao.me/api/sources');
+		x.open('GET',  API_URL + '/sources');
 		x.onreadystatechange = function(){
 			if(x.readyState == 4 && x.status == 200){
 				var response = JSON.parse(x.responseText);

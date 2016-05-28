@@ -1,5 +1,5 @@
 var isDev = false;
-var API_URL = isDev ? 'http://localhost:8081/api' : 'https://sunfile.danielchao.me/api'
+API_URL = isDev ? 'http://localhost:8081/api' : 'https://sunfile.danielchao.me/api'
 function isLoggedIn (callback) {
 	var x = new XMLHttpRequest();
     x.withCredentials = true;

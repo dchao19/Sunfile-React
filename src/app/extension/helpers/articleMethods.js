@@ -279,7 +279,6 @@ function onScriptMessage (request, sender,ctxt,user) {
 												ctxt.refs.fileButton.removeAttribute('disabled');
 												ctxt.refs.fileButton.innerHTML = "File this article";
 											}else {
-												console.log(response);
 												ctxt.refs.fileButton.className.replace(' disabled', '');
 												ctxt.refs.fileButton.removeAttribute('disabled');
 												ctxt.refs.fileButton.innerHTML = "File this article";

@@ -23,7 +23,8 @@ var aylienAPIKey = {
 
 function getAuthor(url, callback){
 	var x = new XMLHttpRequest();
-	x.open('GET', 'https://api.aylien.com/api/v1/extract?url='+url);
+	x.open('POST', 'https://api.aylien.com/api/v1/extract');
+	x.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	x.setRequestHeader('X-AYLIEN-TextAPI-Application-Key', aylienAPIKey.key);
 	x.setRequestHeader('X-AYLIEN-TextAPI-Application-ID', aylienAPIKey.appId);
 	x.onreadystatechange = function () {
@@ -31,7 +32,7 @@ function getAuthor(url, callback){
 			callback(true, JSON.parse(x.responseText).author);
 		}
 	}
-	x.send();
+	x.send(getEncodedData({url: url}));
 }
 
 function getSummary(text,title, callback) {

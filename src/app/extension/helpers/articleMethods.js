@@ -99,7 +99,7 @@ function articleFilename() {
 }
 
 function saveArticle() {
-	JSZipUtils.getBinaryContent('templates/extempfilewithsummary.docx', function(err, content){
+	JSZipUtils.getBinaryContent('templates/extempfilekeywordsummary.docx', function(err, content){
 		var file = new wordtemplater(content);
 		file.setData(grabbedArticle);
 		file.render();
@@ -129,7 +129,7 @@ function onScriptMessage (request, sender, ctxt, user) {
 				grabbedArticle.title = result.title;
 				grabbedArticle.formattedPubDate = moment(result.pubDate).format("MMMM D, YYYY");
 				grabbedArticle.shortDate = moment(result.pubDate).format("YYMMDD");
-				grabbedArticle.tags = result.keywords;
+				grabbedArticle.keywordsString = result.keywords.join(";");
 				currentTabUrl(function (url) {
 					var fileCodes = urlToFileCode(url);
 					grabbedArticle.shortPublication = fileCodes.short;

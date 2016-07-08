@@ -22,7 +22,7 @@ class Portal extends React.Component {
 		var ctxt = this;
 		var x = new XMLHttpRequest();
 		x.withCredentials = true;
-		x.open('GET', 'https://sunfile.azurewebsites.net/api/stats/userinfo');
+		x.open('GET', API_URL + '/stats/userinfo');
 		x.onreadystatechange = function(){
 			if(x.readyState == 4 && x.status == 200){
 				var response  = JSON.parse(x.responseText);

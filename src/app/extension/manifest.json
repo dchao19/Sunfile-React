@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "SunFile",
   "description": "A small extemp utiliy that downloads an article in a word document format with publication names and dates.",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "browser_action": {
     "default_icon": "icons/icon19.png",
     "default_popup": "index.html"
